@@ -1,0 +1,47 @@
+result
+{
+    "result": {
+        "n": 1,
+        "nModified": 1,
+        "ok": 1
+    },
+    "connection": {
+        "id": 0,
+        "host": "localhost",
+        "port": 27017
+    },
+    "modifiedCount": 1,
+    "upsertedId": null,
+    "upsertedCount": 0,
+    "matchedCount": 1,
+    "n": 1,
+    "nModified": 1,
+    "ok": 1
+}
+
+
+//THIS IS PUT SERVICE  TO UPDATE DATA IN COLLECTION (SERVICE PROVIDER).
+
+app.put('/api/spo/event/updatedesc', (req, res)=>{
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("event_management_system");
+  var myquery = {    amount : "$8000" };
+  var newvalues = { $set: {sponsorId : "105",  amount : "$8670"} };
+  dbo.collection("sponsor").updateOne(myquery, newvalues, function(err, result) {
+    if (err) throw err;
+    console.log( " document updated");
+	res.send(result);
+    db.close();
+  });
+});
+});
+
+
+
+{ "_id" : ObjectId("5d8e7bbf5710ff3ad231103a"), "sponsorId" : 107, "sname" : "mantej basra ", "amount" : "$8000" }
+{ "_id" : ObjectId("5dead85453a912151c61a9d3"), "sponsorId" : "104", "sname" : "ks kkkt", "amount" : "$1000", "sPhone" : "5678345" }
+>
