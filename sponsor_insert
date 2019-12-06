@@ -1,0 +1,70 @@
+{
+    "result": {
+        "n": 1,
+        "ok": 1
+    },
+    "connection": {
+        "id": 0,
+        "host": "localhost",
+        "port": 27017
+    },
+    "ops": [
+        {
+            "sponsorId": "104",
+            "sname": "ks kkkt",
+            "amount": "$1000",
+            "sPhone": "5678345",
+            "_id": "5dead85453a912151c61a9d3"
+        }
+    ],
+    "insertedCount": 1,
+    "insertedId": "5dead85453a912151c61a9d3",
+    "n": 1,
+    "ok": 1
+}
+
+
+
+
+//THIS IS POST SERVICE WITH INSERT TO INSERT DATA IN COLLECTION (SPONSOR).
+
+app.post('/api/sp/spInsert', (req, res)=>{
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+if (err) throw err;
+var dbo = db.db("event_management_system");
+var myobj = {sponsorId : "104", sname : "ks kkkt", amount : "$1000", sPhone : "5678345"};
+dbo.collection("sponsor").insertOne(myobj, function(err, result) {
+if (err) throw err;
+console.log("1 document inserted");
+res.send(result);
+db.close();
+});
+});
+});
+
+// collection sponsor
+> db.sponsor.find()
+{ "_id" : ObjectId("5d8e7aa65710ff3ad2311033"), "sponsorId" : 100, "sname" : "mk mittals", "amount" : "$2000" }
+{ "_id" : ObjectId("5d8e7b0f5710ff3ad2311034"), "sponsorId" : 101, "sname" : "kjk mittals", "amount" : "$25000" }
+{ "_id" : ObjectId("5d8e7b215710ff3ad2311035"), "sponsorId" : 102, "sname" : "km company", "amount" : "$25000" }
+{ "_id" : ObjectId("5d8e7b4c5710ff3ad2311036"), "sponsorId" : 103, "sname" : "ls albert", "amount" : "$2000" }
+{ "_id" : ObjectId("5d8e7b685710ff3ad2311037"), "sponsorId" : 104, "sname" : "ks kkkt", "amount" : "$1000" }
+{ "_id" : ObjectId("5d8e7b8a5710ff3ad2311038"), "sponsorId" : 105, "sname" : "ktcompany", "amount" : "$8000" }
+{ "_id" : ObjectId("5d8e7b9e5710ff3ad2311039"), "sponsorId" : 106, "sname" : "mehak ", "amount" : "$800" }
+{ "_id" : ObjectId("5d8e7bbf5710ff3ad231103a"), "sponsorId" : 107, "sname" : "mantej basra ", "amount" : "$8000" }
+
+this is after insertion
+> db.sponsor.find()
+{ "_id" : ObjectId("5d8e7aa65710ff3ad2311033"), "sponsorId" : 100, "sname" : "mk mittals", "amount" : "$2000" }
+{ "_id" : ObjectId("5d8e7b0f5710ff3ad2311034"), "sponsorId" : 101, "sname" : "kjk mittals", "amount" : "$25000" }
+{ "_id" : ObjectId("5d8e7b215710ff3ad2311035"), "sponsorId" : 102, "sname" : "km company", "amount" : "$25000" }
+{ "_id" : ObjectId("5d8e7b4c5710ff3ad2311036"), "sponsorId" : 103, "sname" : "ls albert", "amount" : "$2000" }
+{ "_id" : ObjectId("5d8e7b685710ff3ad2311037"), "sponsorId" : 104, "sname" : "ks kkkt", "amount" : "$1000" }
+{ "_id" : ObjectId("5d8e7b8a5710ff3ad2311038"), "sponsorId" : 105, "sname" : "ktcompany", "amount" : "$8000" }
+{ "_id" : ObjectId("5d8e7b9e5710ff3ad2311039"), "sponsorId" : 106, "sname" : "mehak ", "amount" : "$800" }
+{ "_id" : ObjectId("5d8e7bbf5710ff3ad231103a"), "sponsorId" : 107, "sname" : "mantej basra ", "amount" : "$8000" }
+{ "_id" : ObjectId("5dead85453a912151c61a9d3"), "sponsorId" : "104", "sname" : "ks kkkt", "amount" : "$1000", "sPhone" : "5678345" }
+>
