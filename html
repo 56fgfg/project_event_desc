@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="project.css">
+</head>
+<body>
+<div align="center">
+Insert serviceprovider data :
+
+<form action="http:/localhost:8081/insert" method="post"align="center">
+ <input type ="hidden" name ="_method" value="PUT">
+<div>
+<table align="center">
+<tr><td>
+<label for="clientId">companyName:</label></td><td>
+<input type="text" name="companyName"></input></td></tr>
+</div>
+<div><tr><td>
+<label for="clientName">contact:</label></td><td>
+<input type="text" name="contact"></input></td></tr>
+</div>
+<div><tr><td>
+<label for="contactNo">serviceType:</label></td><td>
+<input type="text" name="serviceType"></input></td></tr>
+</div>
+<div><tr><td>
+<label for="address">serviceRate:</label></td><td>
+<input type="text" name="serviceRate"></input></td></tr>
+</table>
+</div>
+
+<div class="button">
+<button type="insert">Insert</button>
+</div>
+
+</form>
+<div>
+
+<form action="http://localhost:8081/show" method="get" align="center">
+ <input type ="hidden" name ="_method" value="get">
+
+<div class="button">
+<button type="show">show</button>
+</div>
+
+</form>
+<div>
+Update data by filling out the fields below:
+
+<form action="/update" method="post" align="center">
+<input type ="hidden" name ="_method" value="PUT">
+<div>
+<label for="client">companyName:</label>
+<input type="text" name="companyName"></input>
+</div>
+<div>
+<label for="name">contact:</label>
+<input type="text" name="contact"></input>
+</div>
+<div>
+<label for="contact">serviceType:</label>
+<input type="text" name="serviceType"></input>
+</div>
+<div>
+<label for="address">serviceTate:</label>
+<input type="text" name="serviceRate"></input>
+</div>
+
+<div class="button">
+<button type="update">Update</button>
+</div>
+
+</form>
+
+<div>
+Delete a client:
+
+<form action="/delete" method = "post" align="center">
+<input type ="hidden" name ="_method" value="DELETE">
+<div>
+<label for="company">companyName:</label>
+<input type="text" name="title"></input>
+</div>
+<div>
+<button type="delete">Delete</button>
+</div>
+</form>
+
+</head>
+</html>
+
+
+
+
+
+
+
+
+
